@@ -34,7 +34,7 @@ fi
 {%- if client.auth.method == 'webroot' %}
 VOLUMES="$VOLUMES -v {{ client.auth.path|default('/var/www') }}:{{ client.auth.path|default('/var/www') }}"
 {%- endif %}
-{%- for domain in client.get('domain', {}).iteritems() %}
+{%- for domain in client.get('domain', {}).items() %}
 {%- if domain.get('auth', {}).get('method', None) == 'webroot' %}
 VOLUMES="$VOLUMES -v {{ domain.auth.path|default('/var/www') }}:{{ domain.auth.path|default('/var/www') }}"
 {%- endif %}
