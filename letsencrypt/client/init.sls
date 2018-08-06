@@ -129,6 +129,7 @@ certbot_renewal_{{ hookset }}_phook_{{ loop.index }}:
   file.managed:
     - name: /etc/letsencrypt/renewal-hooks/{{ hookset }}/{{ basename }}
     - contents_pillar: letsencrypt:client:pillarhooks:{{ hookset }}:{{ basename }}
+    - makedirs: True
     - mode: 700
     - require:
       - cmd: certbot_installed
